@@ -25,6 +25,7 @@ while should_continue:
         should_continue = False
         continue
 
+
     print(logo)
     player_card.extend([cards[randint(0, len(cards) - 1)], cards[randint(0, len(cards) - 1)]])
     computer_card.append(cards[randint(0, len(cards) - 1)])
