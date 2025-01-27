@@ -3,12 +3,12 @@ import turtle as t
 
 eyob = t.Turtle()
 t.colormode(255)
-turtle_colors = [
-    "red", "blue", "green", "yellow", "purple", "orange",
-    "pink", "brown", "black", "white", "gray", "cyan",
-    "magenta", "lime", "turquoise", "gold", "navy", "coral",
-    "indigo", "violet", "salmon", "chocolate", "beige", "dark green"
-]
+# turtle_colors = [
+#     "red", "blue", "green", "yellow", "purple", "orange",
+#     "pink", "brown", "black", "white", "gray", "cyan",
+#     "magenta", "lime", "turquoise", "gold", "navy", "coral",
+#     "indigo", "violet", "salmon", "chocolate", "beige", "dark green"
+# ]
 
 direction = [0, 90, 180, 270]
 eyob.pensize(15)
