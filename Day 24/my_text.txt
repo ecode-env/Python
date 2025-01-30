@@ -1,0 +1,3 @@
+hello, my name is eyob
+Its delete all text and add this text
+Its add a file in the text without over write.
