@@ -12,7 +12,7 @@ import pandas
 #     print(temperatures)
 import pandas as pd
 
-data = pd.read_csv('weather-data.csv')
+#data = pd.read_csv('weather-data.csv')
 
 #print(data)
 
