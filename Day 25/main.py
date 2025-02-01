@@ -1,10 +1,8 @@
-# with open('weather-data.csv') as data_file:
-#     data = data_file.readlines()
-# print(data)
-from itertools import count
-
+# with open('weather-data.csv') as data:
+#     data_list = data.readlines()
+# print(data_list)
+import pandas
 # import csv
-#
 # with open('weather-data.csv') as data_file:
 #     data = csv.reader(data_file)
 #     temperatures = []
@@ -12,72 +10,70 @@ from itertools import count
 #         if row[1] != 'temp':
 #             temperatures.append(int(row[1]))
 #     print(temperatures)
+import pandas as pd
 
-import pandas
+data = pd.read_csv('weather-data.csv')
 
-# data = pandas.read_csv('weather-data.csv')
-# print(data)
-#print(data['temp'])
+#print(data)
 
+## to change data to dictionary
 
-#data_dict = data.to_dict()
+# data_dict = data.to_dict()
+#
 # print(data_dict)
 
-# data_list = data['temp'].to_list()
-# print(data_list)
-
+# to change the colum of data to list
 
 # data_list = data['temp'].to_list()
-# data_list_avg = sum(data_list) / len(data_list)
-#
-# print(data_list_avg)
+#print(type(data_list)) ## series
+#print(data_list)
 
+## to calculate the average of colm temp
 
+#temp_av = sum(data_list) / len(data_list)
+#print(temp_av)
 
-#print(data['temp'].mean())
+## to calculate maximum of number with series method
 
+# data_max = data['temp'].max()
+# print(data_max)
 
-#print(data['temp'].max())
+##to get data in columns
+
+#print(data.day)
+
+## to get data in row
 
 #print(data[data.day == 'Monday'])
-
+## to get the maximum value of temp row.
 #print(data[data.temp == data.temp.max()])
 
+## to get one item in the table
+
 # monday = data[data.day == 'Monday']
-# print(monday['temp'])
+# print(monday.condition)
+
+## to change from Celsius to Fahrenheit.
+
+# monday = data[data.day == 'Monday']
+# temp_celsius = monday.temp[0]
+# temp_fahrenheit = (temp_celsius * 9/5) + 32
+# print(temp_fahrenheit)
+
+
+## create data frame with pandas
 #
-# Fahrenheit = monday.temp[0] * 9/5 + 32
-#
-# print(Fahrenheit)
-
-
-
 # data_dict = {
-#     "Name": ["Alice", "Bob", "Charlie"],
-#     "Age": [25, 30, 35],
-#     "Score": [85, 90, 95]
+#     'student' : ['eyob', 'angela', 'jack'],
+#     'scores' : [70, 80, 60]
 # }
-#
-# df = pandas.DataFrame(data_dict)
-#
-# df.to_csv('new_data.csv')
+# data_ = pandas.DataFrame(data_dict)
+# print(data_)
 
-# print(df)
+##change top csv
 
-data = pandas.read_csv('2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv')
+#print(data_.to_csv())
 
-
-gray_squirrels_count  = len(data[data['Primary Fur Color'] == 'Gray'])
-red_squirrels_count  = len(data[data['Primary Fur Color'] == 'Cinnamon'])
-black_squirrels_count = len(data[data['Primary Fur Color'] == 'Black'])
-
-data_dict = {
-    "Fur Color" : ["Gray", "Cinnamon", "Black"],
-    "Count" : [gray_squirrels_count, red_squirrels_count, black_squirrels_count]
-}
-
-data_frame = pandas.DataFrame(data_dict)
-data_frame.to_csv('squirrel_count.csv')
 
 
 
