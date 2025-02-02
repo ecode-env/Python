@@ -22,12 +22,12 @@
 
 
 import pandas
-
-student_dict = {
-    "student": ["eyob","angela"],
-    "score": [80,90]
-}
-student_df = pandas.DataFrame(student_dict)
+#
+# student_dict = {
+#     "student": ["eyob","angela"],
+#     "score": [80,90]
+# }
+# student_df = pandas.DataFrame(student_dict)
 
 
 ## Loop through data frame
@@ -35,10 +35,23 @@ student_df = pandas.DataFrame(student_dict)
 #     print(value)
 
 ## Loop through row of data frame
+#
+# for (index, row) in student_df.iterrows():
+#     #print(row.student)
+#     #print(row)
+#
+#     if row.student == 'eyob':
+#         print(row.score)
 
-for (index, row) in student_df.iterrows():
-    #print(row.student)
-    #print(row)
 
-    if row.student == 'eyob':
-        print(row.score)
+## TODO 1:
+nato = pandas.read_csv('nato_phonetic_alphabet.csv')
+
+new_dict = {row.letter: row.code for (index, row) in nato.iterrows()}
+
+## TODO 2: Ask user
+user_input = input('Enter a word: ').upper()
+output = [new_dict[char] for char in user_input]
+print(output)
+
+
