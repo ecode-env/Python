@@ -19,7 +19,7 @@ def reset_timer():
     # reset label
     titel_label.config(text='Timer', fg=GREEN)
     # reset checkmarks
-    label_checkmark.config(text=' ')
+    label_checkmark.config(text='')
 
 
 
