@@ -11,5 +11,12 @@
 #             temperature.append(int(row[1]))
 #     print(temperature)
 
+import pandas as pd
 
+data = pd.read_csv('weather_data.csv')
 
+print(data['temp'].max())
+
+# get data with row
+
+print()
