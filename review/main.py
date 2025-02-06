@@ -26,13 +26,30 @@ import pandas as pd
 # monday_temp = monday.temp
 
 ## Create a dataframe from scratch
+# data_dict = {
+#     "student": ["Amy", "James", "Angela"],
+#     "score": [79,87,98]
+# }
+# data = pd.DataFrame(data_dict)
+#
+# ##change to csv data
+#
+# data.to_csv('new_data.csv')
+# print(data)
+
+data = pd.read_csv('2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv')
+
+all_colors = len(data[data['Primary Fur Color'] == 'Black'])
+
+black_fur_color  = len(data[data['Primary Fur Color'] == 'Black'])
+cinnamon_fur_color  = len(data[data['Primary Fur Color'] == 'Cinnamon'])
+gray_fur_color  = len(data[data['Primary Fur Color'] == 'Gray'])
+
 data_dict = {
-    "student": ["Amy", "James", "Angela"],
-    "score": [79,87,98]
+    "Fur color": ['black', 'gray', 'cinnamon'],
+    "Count": [black_fur_color,gray_fur_color, cinnamon_fur_color],
+
 }
-data = pd.DataFrame(data_dict)
+new_data = pd.DataFrame(data_dict)
 
-##change to csv data
-
-data.to_csv('new_data.csv')
-print(data)
+#new_data.to_csv('squirrel_count.csv')
