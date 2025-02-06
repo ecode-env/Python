@@ -18,5 +18,11 @@ data = pd.read_csv('weather_data.csv')
 # print(data['temp'].max())
 
 # get data with row
+print(data[data.day == 'Monday'])
+print(data[data.temp == data.temp.max()])
 
-print()
+#
+# monday = data[data.day == 'Monday']
+# monday_temp = monday.temp
+
+## Create a dataframe from scratch
