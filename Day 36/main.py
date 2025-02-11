@@ -11,9 +11,9 @@ COMPANY_NAME = "Tesla Inc"
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 
-STOCK_API_KEY = "XFPUX6Y5X0981WT9"
-NEWS_API_KEY = "f962dc8c87c94f18b384ad8e7029cf3a"
-TWILIO_SID = "AC511b4d19428bb13f0d00d51937be6260"
+STOCK_API_KEY = os.environ.get("STOCK_API_KEY")
+NEWS_API_KEY = os.environ.get("NEWS_API_KEY")
+TWILIO_SID = os.environ.get("TWILIO_SID")
 TWILIO_AUTH_TOKEN = os.environ.get("AUTH_TOKEN")
 
 ## STEP 1: Use https://www.alphavantage.co/documentation/#daily
