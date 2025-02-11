@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 
 TOKEN = "srgbntrjghftdgswtrjkjthysa"
 
@@ -33,8 +34,11 @@ header = {
 #
 # print(response.text)
 
+today = datetime.now()
+
+
 pixel_config = {
-    "date": "20250211",
+    "date": today.strftime("%Y%m%d"),
     "quantity": "10",
 }
 
