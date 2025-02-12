@@ -7,6 +7,10 @@ API_KEY= "c2572e9c344bfc7ae49c72a948eb5190"
 nutritionix_endpoint = "https://trackapi.nutritionix.com/v2/natural/exercise"
 sheet_endpoint = "https://api.sheety.co/823f6199e759c8f1e33ee34d5cc0c4ed/workoutTracking/workouts"
 
+head = {
+"Content-Type": "application/json",
+"Authorization": "Bearer uyfghnjmkhiugyftcdrtfvugjbhhhhbgcfdchjbkl"
+}
 
 header = {
     "x-app-id": APP_ID,
@@ -29,10 +33,10 @@ sheet_inputs = {
 
 
 
-response =  requests.post(sheet_endpoint, json=sheet_inputs)
-response.raise_for_status()
-print(response.json())
+response =  requests.post(sheet_endpoint, json=sheet_inputs, headers=head)
+print(response.text)
 
 #response = requests.post(url=nutritionix_endpoint, json=exercise, headers=header)
 
 #print(response.json())
+
