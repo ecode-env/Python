@@ -1,42 +1,56 @@
 import requests
-
+from datetime import datetime
 
 APP_ID= "f0dfd476"
-API_KEY= "c2572e9c344bfc7ae49c72a948eb5190"
+API_KEY= "7a3c3e464740108aae7f395ccfad3214"
 
-nutritionix_endpoint = "https://trackapi.nutritionix.com/v2/natural/exercise"
-sheet_endpoint = "https://api.sheety.co/823f6199e759c8f1e33ee34d5cc0c4ed/workoutTracking/workouts"
+GENDER = "Male"
+WEIGHT_KG = 74
+HEIGHT_CM = 1.71
+AGE = 23
 
-head = {
-"Content-Type": "application/json",
-"Authorization": "Bearer uyfghnjmkhiugyftcdrtfvugjbhhhhbgcfdchjbkl"
-}
 
-header = {
+exercise_endpoint = "https://trackapi.nutritionix.com/v2/natural/exercise"
+sheet_endpoint = "https://api.sheety.co/46b335bbca1da283345b8cde03c89291/newWorkoutsProject/workouts"
+
+exercise_text = input("Tell me which exercises you did: ")
+
+headers = {
     "x-app-id": APP_ID,
-    "x-app-key": API_KEY
+    "x-app-key": API_KEY,
 }
 
-exercise = {
-    "query": "Ran 2 miles and walked for 3km."
+parameters = {
+    "query": exercise_text,
+    "gender": GENDER,
+    "weight_kg": WEIGHT_KG,
+    "height_cm": HEIGHT_CM,
+    "age": AGE
 }
 
-sheet_inputs = {
-    "workout": {
-        "date": "11/01/2025",
-        "time": "10:23",
-        "exercise": "walk",
-        "duration": 22,
-        "calories": 130
+response = requests.post(exercise_endpoint, json=parameters, headers=headers)
+result = response.json()['exercises']
+
+
+today = datetime.now()
+
+
+for exercise in result:
+    sheet_inputs = {
+        "workout": {
+            "date": today.strftime("%x"),
+            "time": today.strftime("%X"),
+            "exercise": exercise['name'].title(),
+            "duration": exercise['duration_min'],
+            "calories": exercise['nf_calories']
+        }
     }
-}
+
+    response = requests.post(sheet_endpoint, json=sheet_inputs)
+
+    print(f"Response: {response.text}")
 
 
 
-response =  requests.post(sheet_endpoint, json=sheet_inputs, headers=head)
-print(response.text)
 
-#response = requests.post(url=nutritionix_endpoint, json=exercise, headers=header)
-
-#print(response.json())
 
