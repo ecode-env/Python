@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-SHEETY_PRICES_ENDPOINT = YOUR ENDPOINT HERE
+#SHEETY_PRICES_ENDPOINT = YOUR ENDPOINT HERE
 
 
 class DataManager:
