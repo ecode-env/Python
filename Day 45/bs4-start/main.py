@@ -52,3 +52,4 @@ soup = BeautifulSoup(data, "html.parser")
 #
 # print(all_class)
 
+
