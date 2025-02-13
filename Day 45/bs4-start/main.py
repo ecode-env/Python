@@ -1,10 +1,77 @@
+from operator import index
+
 from bs4 import BeautifulSoup
+import requests
 
 
-with open('website.html') as file:
-    data = file.read()
+response = requests.get('https://appbrewery.github.io/news.ycombinator.com/')
+response.raise_for_status()
 
-soup = BeautifulSoup(data, "html.parser")
+content = response.text
+
+soup = BeautifulSoup(content, 'html.parser')
+
+articles_text = []
+articles_link = []
+
+
+
+articles = soup.find_all(name="a", class_="storylink")
+article_texts = []
+article_links = []
+
+for article_tag in articles:
+    text = article_tag.getText()
+    article_texts.append(text)
+    link = article_tag.get("href")
+    article_links.append(link)
+article_upVotes = [int(score.getText().split()[0]) for score in soup.find_all(name="span", class_="score")]
+
+print(article_upVotes)
+print(article_links)
+print(article_texts)
+
+inx = article_upVotes.index(max(article_upVotes))
+
+
+title = article_texts[inx]
+link = article_links[inx]
+
+print(inx)
+print(title)
+print(link)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# with open('website.html') as file:
+#     data = file.read()
+#
+# soup = BeautifulSoup(data, "html.parser")
 
 # print(soup) # All data without indent
 
