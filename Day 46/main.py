@@ -15,4 +15,3 @@ soup = BeautifulSoup(response.text, 'html.parser')
 
 
 top_music = [music.getText().strip() for music in soup.select(selector='li ul li h3')]
-print(len(top_music))
