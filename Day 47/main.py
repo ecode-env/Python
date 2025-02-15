@@ -31,7 +31,7 @@ soup = BeautifulSoup(response.text, 'html.parser')
 price = float(soup.find(name='span', class_='aok-offscreen').getText().split("$")[1])
 
 link = 'https://appbrewery.github.io/instant_pot/'
-msg = str(soup.find(name='span', class_='product-title-word-break').getText())
+msg = str(soup.find(name='span', class_='product-title-word-break').getText()).replace(' ', '')
 
 print(msg)
 
