@@ -7,23 +7,26 @@ EMAIL = "eyobbmulugeta@gmail.com"
 
 URL = 'https://appbrewery.github.io/instant_pot/'
 
-header = {
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+headers= {
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
     "Accept-Encoding": "gzip, deflate, br, zstd",
-    "Accept-Language": "en-GB,de;q=0.8,fr;q=0.6,en;q=0.4,ja;q=0.2",
-    "Dnt": "1",
-    "Priority": "u=1",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Host": "httpbin.org",
+    "Priority": "u=0, i",
+    "Sec-Ch-Ua": "\"Not A(Brand\";v=\"8\", \"Chromium\";v=\"132\", \"Google Chrome\";v=\"132\"",
+    "Sec-Ch-Ua-Mobile": "?0",
+    "Sec-Ch-Ua-Platform": "\"Linux\"",
     "Sec-Fetch-Dest": "document",
     "Sec-Fetch-Mode": "navigate",
-    "Sec-Fetch-Site": "none",
+    "Sec-Fetch-Site": "cross-site",
     "Sec-Fetch-User": "?1",
-    "Sec-Gpc": "1",
     "Upgrade-Insecure-Requests": "1",
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:126.0) Gecko/20100101 Firefox/126.0",
-}
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36",
+    "X-Amzn-Trace-Id": "Root=1-67b09ebd-18596435288397dd65edf8c1"
+  }
 
 
-response = requests.get(url=URL, headers=header)
+response = requests.get(url=URL, headers=headers)
 
 
 soup = BeautifulSoup(response.text, 'html.parser')
