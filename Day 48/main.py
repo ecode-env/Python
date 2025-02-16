@@ -15,7 +15,12 @@ amazon = 'https://www.amazon.com/Apple-MacBook-Laptop-10%E2%80%91core-16%E2%80%9
 #prise_dollar = driver.find_element(By.CLASS_NAME, value='here class name')
 
 #prise_dollar = driver.find_element(By.ID, value='_price')
+
+#To find witch css selector
+#prise_dollar = driver.find_element(By.CSS_SELECTOR, value='here name')
+
 # we can get more information
+
 # we use prise_dollar.get_attribute('ex. placeholder')
 #print(prise_dollar.text)
 
