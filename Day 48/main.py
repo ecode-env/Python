@@ -8,7 +8,7 @@ chrome_option.add_experimental_option("detach", True)
 
 
 
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(options=chrome_option)
 driver.get(url='https://www.python.org/')
 
 # price_dollar = driver.find_element(By.CLASS_NAME, value='a-price-whole')
