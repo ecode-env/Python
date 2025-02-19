@@ -36,7 +36,7 @@ driver.get(url="https://secure-retreat-92358.herokuapp.com/")
 # # Press Enter to perform the search
 # search.send_keys(Keys.ENTER)
 
-##TODO: CHALLENGE 2
+## CHALLENGE 2
 
 
 # Optionally, close the browser after the search
