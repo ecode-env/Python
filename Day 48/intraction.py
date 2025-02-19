@@ -38,6 +38,17 @@ driver.get(url="https://secure-retreat-92358.herokuapp.com/")
 
 ## CHALLENGE 2
 
+fName = driver.find_element(By.NAME, value='fName')
+lName = driver.find_element(By.NAME, value='lName')
+email = driver.find_element(By.NAME, value='email')
+button = driver.find_element(By.CLASS_NAME, value='btn')
+print(fName.text)
+
+fName.send_keys("Eyob", Keys.ENTER)
+lName.send_keys("Mulugeta", Keys.ENTER)
+email.send_keys("eyobbmulugeta@gmail.com", Keys.ENTER)
+button.click()
+
 
 # Optionally, close the browser after the search
 # driver.close()
