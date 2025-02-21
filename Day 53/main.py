@@ -1,5 +1,5 @@
-import requests
-from bs4 import BeautifulSoup
+# import requests
+# from bs4 import BeautifulSoup
 
 
 # response = requests.get(url='https://appbrewery.github.io/Zillow-Clone/').text
