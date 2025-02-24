@@ -6,7 +6,6 @@ app = Flask(__name__)
 
 number = randint(0, 9)
 
-
 def answer(function):
     def wrapper(**kwargs):
 
