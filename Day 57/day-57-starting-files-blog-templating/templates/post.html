@@ -11,16 +11,17 @@
     <div class="top">
         <div class="title"><h1>My Blog</h1></div>
            </div>
+    {% for all_posts in posts %}
         <div class="content">
             <div class="card">
-                <h2>Title</h2>
-                <p>Post Body</p>
+                    <h2>{{ all_posts["title"] }}</h2>
+                    <p>{{ all_posts["body"] }}</p>
             </div>
-
-    </div>
+        </div>
+    {% endfor %}
 </div>
 </body>
 <footer>
-    <p>Made with ♥️ in London.</p>
+    <p>Made with ♥️ in Addis Ababa by Eyob.</p>
 </footer>
 </html>
