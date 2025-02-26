@@ -16,8 +16,6 @@ def home():
 def guess(name):
     gender = requests.get(url=f"https://api.genderize.io/?name={name}").json()['gender']
     age = requests.get(url=f"https://api.agify.io?name={name}").json()["age"]
-
-
     return render_template(template_name_or_list="guess.html",
                            name=name,
                            age=age,
