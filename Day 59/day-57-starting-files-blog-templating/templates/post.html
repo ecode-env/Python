@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="top">
+        <div class="title"><h1>My Blog</h1></div>
+           </div>
+    {% for all_posts in posts %}
+        <div class="content">
+            <div class="card">
+                    <h2>{{ all_posts["title"] }}</h2>
+                    <p>{{ all_posts["body"] }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+</body>
+<footer>
+    <p>Made with ♥️ in Addis Ababa by Eyob.</p>
+</footer>
+</html>
