@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 import requests
 
-# USE YOUR OWN npoint LINK! ADD AN IMAGE URL FOR YOUR POST. 👇
+
 posts = requests.get("https://api.npoint.io/d9d504779f838de6e2b3").json()
 
 app = Flask(__name__)
