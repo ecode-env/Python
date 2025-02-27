@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import requests
+import smtplib
 
 
 
@@ -23,13 +24,39 @@ def about():
 def contact():
     if request.method == "POST":
         data = request.form
-        print(data["name"])
-        print(data["email"])
-        print(data["phone"])
-        print(data["message"])
-        return render_template("contact.html", successfull="Successfully sent your message")
+        try:
+            name = data["name"]
+            email = data["email"]
+            phone = data["phone"]
+            message = data["message"]
+
+            email_body = f"Name: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}"
+            message_handler(email_body)
+
+            return render_template("contact.html", successfull="Successfully sent your message")
+        except KeyError:
+            pass
+        except Exception:
+            pass
+
     return render_template("contact.html")
 
+
+def message_handler(message):
+    my_gmail = 'eyobbmulugeta@gmail.com'
+    password = 'ftgpfxwyebrazxdf'
+    try:
+        with smtplib.SMTP('smtp.gmail.com', 587) as connection:
+            connection.starttls()
+            connection.login(user=my_gmail, password=password)
+            connection.sendmail(
+                from_addr=my_gmail,
+                to_addrs='maranataa10@gmail.com',
+                msg=f"Subject: New Contact Form Submission\n\n{message}"
+            )
+    except Exception:
+
+        pass
 
 @app.route("/post/<int:index>")
 def show_post(index):
