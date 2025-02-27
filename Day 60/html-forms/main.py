@@ -32,7 +32,7 @@ def show_post(index):
 
 @app.route("/form-entry")
 def receive_data():
-    return ''
+    return "Successfully sent your message"
 
 
 
