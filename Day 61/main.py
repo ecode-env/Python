@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from flask_wtf import FlaskForm
 from wtforms import PasswordField,StringField, SubmitField
 from wtforms.validators import DataRequired, Length, Email
-from flask_bootstrap import Bootstrap4
+from flask_bootstrap import Bootstrap5
 
 class MyForm(FlaskForm):
     email = StringField(label='Email', validators=[DataRequired(), Email(message="Invalid email format. Must contain '@' and '.'")])
@@ -12,7 +12,9 @@ class MyForm(FlaskForm):
 
 
 app = Flask(__name__)
+bootstrap4 = Bootstrap5(app)
 app.secret_key = 'b_5#y2L"F4Q8z:{}]/'
+
 
 
 @app.route("/")
