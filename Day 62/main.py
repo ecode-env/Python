@@ -6,13 +6,13 @@ from wtforms.validators import DataRequired
 import csv
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = '8BYkEfxdfcgvhbjnkmlBA6O6donzWlSihBXox7C0sKR6b'
 Bootstrap5(app)
 
 
 class CafeForm(FlaskForm):
-    cafe = StringField('Cafe name', validators=[DataRequired()])
-    submit = SubmitField('Submit')
+    cafe = StringField(label='Cafe name', validators=[DataRequired()])
+    submit = SubmitField(label='Submit')
 
 # Exercise:
 # add: Location URL, open time, closing time, coffee rating, wifi rating, power outlet rating fields
