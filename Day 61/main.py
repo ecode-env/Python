@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from flask_wtf import FlaskForm
 from wtforms import PasswordField,StringField, SubmitField
 from wtforms.validators import DataRequired, Length, Email
-
+from flask_bootstrap import Bootstrap4
 
 class MyForm(FlaskForm):
     email = StringField(label='Email', validators=[DataRequired(), Email(message="Invalid email format. Must contain '@' and '.'")])
