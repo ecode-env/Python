@@ -5,8 +5,8 @@ from wtforms import StringField
 from wtforms.validators import DataRequired
 
 class MyForm(FlaskForm):
-    email = StringField(label='email', validators=[DataRequired()])
-    password = PasswordField(label='password', validators=[DataRequired()])
+    email = StringField(label='Email', validators=[DataRequired()])
+    password = PasswordField(label='Password', validators=[DataRequired()])
 
 
 app = Flask(__name__)
