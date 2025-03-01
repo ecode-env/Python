@@ -9,12 +9,13 @@ all_books = []
 
 @app.route('/')
 def home():
-    pass
+    return render_template('index.html')
 
 
-@app.route("/add")
+@app.route("/add", methods=['POST'])
 def add():
-    pass
+
+    return render_template('add.html')
 
 
 if __name__ == "__main__":
