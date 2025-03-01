@@ -28,7 +28,9 @@ def home():
 
 @app.route('/add', methods=["GET", "POST"])
 def add_cafe():
+
     form = CafeForm()
+
     if form.validate_on_submit():
         with open("cafe-data.csv", mode="a", encoding='utf-8') as csv_file:
             csv_file.write(f"\n{form.cafe.data},"
