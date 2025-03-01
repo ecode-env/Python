@@ -18,3 +18,27 @@ from sqlalchemy import Integer, String, Float
 # db.commit()
 
 
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///new-books-collection.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+
+class Book(db.Model):
+    __tablename__ = 'books'
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    name: Mapped[str] = mapped_column(String(50), nullable=False)
+    email: Mapped[str] = mapped_column(String(100), unique=True, nullable=False)
+    balance: Mapped[float] = mapped_column(Float, default=0.0)
+
+    def __repr__(self):
+        return f'<Book {self.name}>'
+
+
+with app.app_context():
+    db.create_all()
+
+if __name__ == '__main__':
+    app.run(debug=True)
