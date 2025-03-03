@@ -8,11 +8,13 @@
 <h1>My Library</h1>
 <ul>
   {% if books %}
-  {% for book in books %}
-  <li>{{ book['title'] }} - {{ book['author'] }} - {{ book['rating'] }}</li>
-  {% endfor %}
+      {% for book in books %}
+          <li>
+              {{ book['title'] }} - {{ book['author'] }} - {{ book['rating'] }}
+          </li>
+      {% endfor %}
   {% else %}
-  <p>No books available yet</p>
+       <p>No books available yet</p>
   {% endif%}
 </ul>
 <a href="{{ url_for( 'add' )}}">Add New Book</a>
