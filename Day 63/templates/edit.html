@@ -2,15 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>edit</title>
+    <title>Edit Book Rating</title>
 </head>
 <body>
-<p>Book Name: </p>
-<p>Current Rating: </p>
+    <p>Book Name: {{ book.title }}</p>
+    <p>Current Rating: {{ book.rating }}</p>
 
-<form action="{{  }}">
-  <input type="text" name="rating" >
-  <button type="button" value="Change rating"></button>
-</form>
+    <!-- Form action will dynamically add the book ID to the URL for editing -->
+    <form action="{{ url_for('edit', id=book.id) }}" method="POST">
+        <label for="rating">New Rating:</label>
+        <input type="text" name="rating" value="{{ book.rating }}" required>
+        <button type="submit">Change Rating</button>
+    </form>
 </body>
 </html>
