@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Float
@@ -24,3 +24,9 @@ class Book(db.Model):
 
 with app.app_context():
     db.create_all()
+
+
+@app.route('/')
+def home():
+    all_books = db.session.query(Book).all()  # Retrieve all books from DB
+    return render_template('index.html', books=all_books)
