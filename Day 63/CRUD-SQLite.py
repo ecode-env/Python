@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Float
@@ -30,3 +30,21 @@ with app.app_context():
 def home():
     all_books = db.session.query(Book).all()  # Retrieve all books from DB
     return render_template('index.html', books=all_books)
+
+
+@app.route("/add", methods=['GET', 'POST'])
+def add():
+    if request.method == 'POST':
+        new_book = Book(
+            title=request.form["title"],
+            author=request.form["author"],
+            rating=float(request.form["rating"])
+        )
+        db.session.add(new_book)
+        db.session.commit()
+        return redirect(url_for("home"))
+
+    return render_template('add.html')
+
+if __name__ == "__main__":
+    app.run(debug=True)
