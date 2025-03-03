@@ -70,6 +70,7 @@ def edit():
         movie.rating= float(rating)
         movie.review=review
 
+
         db.session.commit()
         return redirect(url_for('home'))
 
