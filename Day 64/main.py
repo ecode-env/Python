@@ -45,11 +45,13 @@ with app.app_context():
 
 @app.route("/")
 def home():
+
     all_movies = db.session.query(Movie).all()
     return render_template("index.html", movies=all_movies)
 
 
 class From(FlaskForm):
+
     rating = StringField(label='Your Rating out of 10, eg. 7.5')
     review = StringField(label='Your Review')
     submit = SubmitField(label='Done')
@@ -57,6 +59,7 @@ class From(FlaskForm):
 
 @app.route("/edit", methods= ["GET", "POST"])
 def edit():
+
     form = From()
     movie_id = request.args.get('id')
     movie = Movie.query.get(movie_id)
