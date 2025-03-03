@@ -10,7 +10,7 @@
   {% if books %}
       {% for book in books %}
           <li>
-              {{ book['title'] }} - {{ book['author'] }} - {{ book['rating'] }}
+              {{ book['title'] }} - {{ book['author'] }} - {{ book['rating'] }} <a href="">Edit Rating</a>
           </li>
       {% endfor %}
   {% else %}
