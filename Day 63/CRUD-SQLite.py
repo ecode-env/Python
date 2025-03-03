@@ -46,5 +46,24 @@ def add():
 
     return render_template('add.html')
 
+
+@app.route("/edit", methods=["GET", "POST"])
+def edit():
+    book_id = request.args.get('id')
+    book_to_update = Book.query.get(book_id)
+
+    if not book_id or book_to_update:
+        return redirect(url_for('home'))
+
+    if request.method == "POST":
+        new_rating = request.form.get('rating')
+        book_to_update.rating = float(new_rating)
+        db.session.commit()
+        return redirect(url_for('home'))
+
+    # Render the edit page with book details
+    return render_template('edit.html', book=book_to_update)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
