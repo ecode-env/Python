@@ -49,5 +49,31 @@ def home():
     return render_template("index.html", movies=all_movies)
 
 
+class From(FlaskForm):
+    rating = StringField(label='Your Rating out of 10, eg. 7.5')
+    review = StringField(label='Your Review')
+    submit = SubmitField(label='Done')
+
+
+@app.route("/edit", methods= ["GET", "POST"])
+def edit():
+    form = From()
+    movie_id = request.args.get('id')
+    movie = Movie.query.get(movie_id)
+
+    if not movie_id:
+        return redirect(url_for('home'))
+
+    if request.method == 'POST':
+        rating = request.form.get('rating')
+        review = request.form.get('review')
+        movie.rating= float(rating)
+        movie.review=review
+
+        db.session.commit()
+        return redirect(url_for('home'))
+
+    return render_template('edit.html', form=form)
+
 if __name__ == '__main__':
     app.run(debug=True)
