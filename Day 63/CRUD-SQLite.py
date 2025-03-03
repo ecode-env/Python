@@ -52,7 +52,7 @@ def edit():
     book_id = request.args.get('id')
     book_to_update = Book.query.get(book_id)
 
-    if not book_id or book_to_update:
+    if not book_id:
         return redirect(url_for('home'))
 
     if request.method == "POST":
@@ -64,6 +64,17 @@ def edit():
     # Render the edit page with book details
     return render_template('edit.html', book=book_to_update)
 
+@app.route('/delete')
+def delete():
+    book_id = request.args.get('id')
+    book_to_delete = Book.query.get(book_id)
+
+    if not book_id:
+        return redirect(url_for('home'))
+
+    db.session.delete(book_to_delete)
+    db.session.commit()
+    return redirect(url_for('home'))
 
 if __name__ == "__main__":
     app.run(debug=True)
