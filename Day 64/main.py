@@ -64,6 +64,7 @@ def edit():
     if not movie_id:
         return redirect(url_for('home'))
 
+
     if request.method == 'POST':
         rating = request.form.get('rating')
         review = request.form.get('review')
