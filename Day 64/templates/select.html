@@ -6,7 +6,15 @@
 <div class="container">
     <h1 class="heading">Select Movie</h1>
   <p>
-    <a href="#"> MOVIE TITLE - MOVIE RELEASE DATE</a>
+    {% if not movie_list %}
+      <h3>Not Found Your Movie!</h3>
+    {% else %}
+      {% for movie in movie_list %}
+           <a href="{{ url_for('add', id=movie['id']) }}">
+              <h5>{{ movie['title'] }} - {{ movie['release_date']}}</h5>
+           </a>
+      {% endfor %}
+    {% endif %}
   </p>
 
 </div>
