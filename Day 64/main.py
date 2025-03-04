@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_bootstrap import Bootstrap5
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -152,12 +152,18 @@ def add():
 
 @app.route('/remove')
 def remove():
+    movie_id = request.args.get('id')
+    movie = Movie.query.get(movie_id)
+    if movie:
 
-    if request.args.get('id'):
-        movie_id = int(request.args.get('id'))
+        db.session.delete(movie)
+        db.session.commit()
+        flash(message="Movie deleted successfully")
+
+        return redirect(url_for('home'))
 
 
-    return render_template('index.html')
+    return redirect(url_for('home'))
 
 
 
