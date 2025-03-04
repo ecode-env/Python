@@ -150,6 +150,15 @@ def add():
     add_movie = AddMovie()
     return render_template('add.html', add=add_movie)
 
+@app.route('/remove')
+def remove():
+
+    if request.args.get('id'):
+        movie_id = int(request.args.get('id'))
+
+
+    return render_template('index.html')
+
 
 
 
