@@ -126,6 +126,7 @@ def add():
             "accept": "application/json",
             "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODEyZjk0MWQyZTA5NDlkODYyOGE4ZWVjNTcyYjU2MSIsIm5iZiI6MTcyODA1NTY4Ni40OTksInN1YiI6IjY3MDAwOTg2NzgzMGMxMzAxZTdjYzg0NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.cEpmiZJ_QotkxMMz3bztiDZKbHL9exFfWn2Z6bxr_xQ"
         }
+
         response = requests.get(url, headers=headers).json()
         year = int(response['release_date'].split('-')[0])
         print(year)
