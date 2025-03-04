@@ -93,6 +93,7 @@ def edit():
 
 
 class AddMovie(FlaskForm):
+
     title = StringField(label='Movie Title')
     add_btn = SubmitField(label='Add Movie')
 
