@@ -81,6 +81,7 @@ def edit():
 
 
     if request.method == 'POST':
+
         rating = request.form.get('rating')
         review = request.form.get('review')
         movie.rating= float(rating)
