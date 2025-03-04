@@ -48,6 +48,7 @@ with app.app_context():
 
 @app.route("/")
 def home():
+
     #all_movies = db.session.execute(select(Movie).order_by(Movie.rating)).scalars().all()
     all_movies = db.session.execute(select(Movie).order_by(Movie.rating.desc())).scalars().all()
 
