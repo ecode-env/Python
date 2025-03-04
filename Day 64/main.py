@@ -55,9 +55,6 @@ def home():
         movie.ranking = index
     db.session.commit()
 
-    for m in all_movies:
-        print(m.ranking)
-        print(m.title)
 
     return render_template("index.html", movies=all_movies)
 
