@@ -99,6 +99,7 @@ class AddMovie(FlaskForm):
 
 @app.route('/add', methods=['POST', 'GET'])
 def add():
+
     url = "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1"
 
     headers = {
