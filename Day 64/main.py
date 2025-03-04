@@ -111,6 +111,7 @@ def add():
         search_movie = {
             "query": request.form.get('title')
         }
+
         response = requests.get(url, headers=headers, params=search_movie)
         result = response.json()['results']
 
