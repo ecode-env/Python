@@ -153,6 +153,7 @@ def add():
 
 @app.route('/remove')
 def remove():
+
     movie_id = request.args.get('id')
     movie = Movie.query.get(movie_id)
     if movie:
