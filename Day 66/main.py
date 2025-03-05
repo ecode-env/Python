@@ -3,7 +3,7 @@ import random
 from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from sqlalchemy import Integer, String, Boolean
+from sqlalchemy import Integer, String, Boolean, select
 
 app = Flask(__name__)
 
@@ -56,7 +56,7 @@ def home():
 def get_random_cafe():
 
     random_cafe = random.choice(Cafe.query.all())
-    #return jsonify(cafe=random_cafe.to_dict())
+    return jsonify(cafe=random_cafe.to_dict())
     # return jsonify(
     #     cafe={
     #     "id": random_cafe.id,
@@ -117,7 +117,12 @@ def get_all_cafes():
 
 @app.route('/search')
 def search():
-    pass
+
+    key = request.args.get('loc')
+    location = Cafe.query.filter(Cafe.location == key).all()
+    if location:
+        return jsonify(cafe=[cafe.to_dict() for cafe in location])
+    return jsonify(error={"Not Found": "Sorry, we don't have a cafe at that location."})
 
 # HTTP POST - Create Record
 
