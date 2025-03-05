@@ -64,7 +64,7 @@ def show_post(post_id):
     return render_template("post.html", post=requested_post)
 
 
-# TODO: add_new_post() to create a new blog post
+#  add_new_post() to create a new blog post
 @app.route('/new-post', methods=['GET','POST'])
 def add_new_post():
 
