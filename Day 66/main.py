@@ -169,6 +169,11 @@ def update_price(cafe_id):
 
 # HTTP DELETE - Delete Record
 
+@app.route('/report-closed/<cafe_id>')
+def report_close(cafe_id):
+    pass
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
