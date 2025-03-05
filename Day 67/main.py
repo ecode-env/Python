@@ -65,7 +65,9 @@ def show_post(post_id):
 # TODO: add_new_post() to create a new blog post
 @app.route('/new-post', methods=['GET','POST'])
 def add_new_post():
+
     form = PostForm()
+
     if form.validate_on_submit():
         new_blog = BlogPost(
             title=form.title.data,
@@ -75,6 +77,7 @@ def add_new_post():
             body=form.body.data,
             author=form.author.data
         )
+
         db.session.add(new_blog)
         db.session.commit()
         return redirect(url_for('get_all_posts'))
