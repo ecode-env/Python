@@ -52,6 +52,9 @@ def show_post(post_id):
 
 
 # TODO: add_new_post() to create a new blog post
+@app.route('/new-post')
+def add_new_post():
+    pass
 
 # TODO: edit_post() to change an existing blog post
 
