@@ -40,7 +40,9 @@ def home():
 
 # HTTP GET - Read Record
 
-
+@app.route("/random")
+def get_random_cafe():
+  pass
 
 # HTTP POST - Create Record
 
