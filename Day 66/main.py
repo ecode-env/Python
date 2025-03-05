@@ -120,6 +120,7 @@ def search():
 
     key = request.args.get('loc')
     location = Cafe.query.filter(Cafe.location == key).all()
+
     if location:
         return jsonify(cafe=[cafe.to_dict() for cafe in location])
     return jsonify(error={"Not Found": "Sorry, we don't have a cafe at that location."})
