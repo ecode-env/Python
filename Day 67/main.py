@@ -9,8 +9,9 @@ from wtforms.validators import DataRequired, URL
 from flask_ckeditor import CKEditor, CKEditorField
 from datetime import date
 
-
 app = Flask(__name__)
+app.config['CKEDITOR_PKG_TYPE'] = 'basic'
+ckeditor = CKEditor(app)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 Bootstrap5(app)
 
@@ -36,6 +37,16 @@ class BlogPost(db.Model):
 with app.app_context():
     db.create_all()
 
+class PostForm(FlaskForm):
+    title = StringField("Blog Post Title", validators=[DataRequired()])
+    subtitle = StringField("Subtitle", validators=[DataRequired()])
+    author = StringField("Your Name", validators=[DataRequired()])
+    img_url = StringField("Blog Image URL", validators=[DataRequired(), URL()])
+
+    body = CKEditorField("Blog Content", validators=[DataRequired()])
+
+    submit = SubmitField("Submit Post")
+
 
 @app.route('/')
 def get_all_posts():
@@ -54,7 +65,8 @@ def show_post(post_id):
 # TODO: add_new_post() to create a new blog post
 @app.route('/new-post')
 def add_new_post():
-    pass
+    form = PostForm()
+    return render_template('make-post.html', form=form)
 
 # TODO: edit_post() to change an existing blog post
 
