@@ -115,6 +115,10 @@ def get_all_cafes():
     all_cafes = Cafe.query.all()
     return jsonify(cafe=[cafe.to_dict() for cafe in all_cafes])
 
+@app.route('/search')
+def search():
+    pass
+
 # HTTP POST - Create Record
 
 # HTTP PUT/PATCH - Update Record
