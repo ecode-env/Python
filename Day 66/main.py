@@ -126,6 +126,8 @@ def search():
 
     return jsonify(error={"Not Found": "Sorry, we don't have a cafe at that location."})
 
+
+
 # HTTP POST - Create Record
 
 # HTTP PUT/PATCH - Update Record
