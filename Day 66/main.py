@@ -94,6 +94,11 @@ def get_random_cafe():
     #     }
     # })
 
+# To get all caffes
+
+@app.route('/add')
+def get_all_cafes():
+    pass
 
 # HTTP POST - Create Record
 
