@@ -130,6 +130,11 @@ def search():
 
 # HTTP POST - Create Record
 
+@app.route('/add')
+def add_new_cafe():
+    pass
+
+
 # HTTP PUT/PATCH - Update Record
 
 # HTTP DELETE - Delete Record
