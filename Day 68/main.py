@@ -29,9 +29,9 @@ def load_user(user_id):
 # CREATE TABLE IN DB with the UserMixin
 class User(UserMixin, db.Model):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    name: Mapped[str] = mapped_column(String(1000))
     email: Mapped[str] = mapped_column(String(100), unique=True)
     password: Mapped[str] = mapped_column(String(100))
-    name: Mapped[str] = mapped_column(String(1000))
 
 
 with app.app_context():
@@ -46,6 +46,13 @@ def home():
 @app.route('/register', methods=["GET", "POST"])
 def register():
     if request.method == "POST":
+
+        result = db.session.execute(db.select(User).where(User.email == request.form.get('email')))
+        user = result.scalar()
+        if user:
+            flash("You've already signed up with that email, log in instead!")
+            return redirect(url_for('login'))
+
         hash_and_salted_password = generate_password_hash(
             request.form.get('password'),
             method='pbkdf2:sha256',
@@ -80,18 +87,20 @@ def login():
         result = db.session.execute(db.select(User).where(User.email == email))
         user = result.scalar()  # This will return the first user that matches the email or None.
 
-        if user is None:
-            # If no user is found, inform the user with a flash message.
-            flash("No user found with that email. Please try again.", "danger")
-            return redirect(url_for('login'))  # Redirect back to the login page.
-
         # Check stored password hash against entered password hash.
-        if check_password_hash(user.password, password):
-            login_user(user)
-            return redirect(url_for('secrets'))  # Redirect to a secure page, like 'secrets'.
+        if not user:
+
+            flash("That email does not exist, please try again.")
+            return redirect(url_for('login'))
+
+        elif not check_password_hash(user.password, password):
+
+            flash('Password incorrect, please try again.')
+            return redirect(url_for('login'))
+
         else:
-            flash("Incorrect password. Please try again.", "danger")  # Inform user about incorrect password.
-            return redirect(url_for('login'))  # Redirect back to the login page.
+            login_user(user)
+            return redirect(url_for('secrets'))
 
     return render_template("login.html")
 
@@ -100,7 +109,6 @@ def login():
 @app.route('/secrets')
 @login_required
 def secrets():
-    print(current_user.name)
     # Passing the name from the current_user
     return render_template("secrets.html", name=current_user.name)
 
