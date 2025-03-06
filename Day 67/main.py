@@ -118,6 +118,11 @@ def edit_post(post_id):
 
 # TODO: delete_post() to remove a blog post from the database
 
+@app.route('/delete/<post_id>')
+def delete_post():
+    pass
+
+
 # Below is the code from previous lessons. No changes needed.
 @app.route("/about")
 def about():
