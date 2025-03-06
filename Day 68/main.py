@@ -110,8 +110,7 @@ def login():
 @login_required
 def secrets():
     # Passing the name from the current_user
-    return render_template("secrets.html", name=current_user.name)
-
+    return render_template("secrets.html", name=current_user.name, logged_in=True)
 
 @app.route('/logout')
 def logout():
