@@ -78,12 +78,20 @@ def login():
 
         # Find user by email entered.
         result = db.session.execute(db.select(User).where(User.email == email))
-        user = result.scalar()
+        user = result.scalar()  # This will return the first user that matches the email or None.
 
-        # Check stored password hash against entered password hashed.
+        if user is None:
+            # If no user is found, inform the user with a flash message.
+            flash("No user found with that email. Please try again.", "danger")
+            return redirect(url_for('login'))  # Redirect back to the login page.
+
+        # Check stored password hash against entered password hash.
         if check_password_hash(user.password, password):
             login_user(user)
-            return redirect(url_for('secrets'))
+            return redirect(url_for('secrets'))  # Redirect to a secure page, like 'secrets'.
+        else:
+            flash("Incorrect password. Please try again.", "danger")  # Inform user about incorrect password.
+            return redirect(url_for('login'))  # Redirect back to the login page.
 
     return render_template("login.html")
 
