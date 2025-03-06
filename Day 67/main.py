@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
@@ -87,9 +87,33 @@ def add_new_post():
 
 
 # TODO: edit_post() to change an existing blog post
-@app.route('/edit')
-def edit_post():
-    pass
+@app.route('/edit-post/<post_id>', methods=['GET','POST'])
+def edit_post(post_id):
+
+    post = db.session.execute(db.select(BlogPost).where(BlogPost.id == post_id)).scalars().all()[0]
+
+    edit_form = PostForm(
+        title=post.title,
+        subtitle=post.subtitle,
+        img_url=post.img_url,
+        author=post.author,
+        body=post.body
+    )
+
+    if edit_form.validate_on_submit():
+
+        post.title = edit_form.title.data
+        post.subtitle = edit_form.subtitle.data
+        post.img_url = edit_form.img_url.data
+        post.author = edit_form.author.data
+        post.body = edit_form.body.data
+
+
+        db.session.commit()
+        flash("Post updated successfully!", "success")
+        return redirect(url_for('get_all_posts'))
+
+    return render_template('make-post.html', form=edit_form, post_id=post_id)
 
 
 # TODO: delete_post() to remove a blog post from the database
