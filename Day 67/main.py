@@ -87,6 +87,10 @@ def add_new_post():
 
 
 # TODO: edit_post() to change an existing blog post
+@app.route('/edit')
+def edit_post():
+    pass
+
 
 # TODO: delete_post() to remove a blog post from the database
 
