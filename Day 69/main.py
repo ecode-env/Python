@@ -32,6 +32,8 @@ def load_user(user_id):
 # CREATE DATABASE
 class Base(DeclarativeBase):
     pass
+
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
 db = SQLAlchemy(model_class=Base)
 db.init_app(app)
@@ -57,8 +59,6 @@ class User(UserMixin,db.Model):
     name: Mapped[str] = mapped_column(String(1000))
     email: Mapped[str] = mapped_column(String(100), unique=True)
     password: Mapped[str] = mapped_column(String(100))
-
-
 
 
 with app.app_context():
@@ -152,7 +152,7 @@ def get_all_posts():
                            )
 
 
-# TODO: Allow logged-in users to comment on posts
+# Allow logged-in users to comment on posts
 @app.route("/post/<int:post_id>")
 @login_required
 def show_post(post_id):
@@ -162,7 +162,7 @@ def show_post(post_id):
                            )
 
 
-# TODO: Use a decorator so only an admin user can create a new post
+# Use a decorator so only an admin user can create a new post
 @app.route("/new-post", methods=["GET", "POST"])
 @admin_only
 def add_new_post():
@@ -182,7 +182,7 @@ def add_new_post():
     return render_template("make-post.html", form=form)
 
 
-# TODO: Use a decorator so only an admin user can edit a post
+# Use a decorator so only an admin user can edit a post
 @app.route("/edit-post/<int:post_id>", methods=["GET", "POST"])
 @admin_only
 def edit_post(post_id):
@@ -205,7 +205,7 @@ def edit_post(post_id):
     return render_template("make-post.html", form=edit_form, is_edit=True)
 
 
-# TODO: Use a decorator so only an admin user can delete a post
+# Use a decorator so only an admin user can delete a post
 @app.route("/delete/<int:post_id>")
 @admin_only
 def delete_post(post_id):
