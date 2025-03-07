@@ -51,6 +51,7 @@ class BlogPost(db.Model):
     body: Mapped[str] = mapped_column(Text, nullable=False)
     author: Mapped[str] = mapped_column(String(250), nullable=False)
     img_url: Mapped[str] = mapped_column(String(250), nullable=False)
+
     author_id : Mapped[int] = mapped_column(ForeignKey("user.id"))
 
 
