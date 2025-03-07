@@ -58,7 +58,6 @@ class BlogPost(db.Model):
 
 
 # Create a User table for all your registered users.
-
 class User(UserMixin,db.Model):
 
     __tablename__ = 'user'
