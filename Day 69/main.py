@@ -1,5 +1,5 @@
 from datetime import date
-from flask import Flask, abort, render_template, redirect, url_for, flash
+from flask import Flask, abort, render_template, redirect, url_for, flash, request
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
 from flask_gravatar import Gravatar
@@ -9,7 +9,7 @@ from sqlalchemy.orm import relationship, DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Text
 from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
-# Import your forms from the forms.py
+from forms import CreatePostForm, RegisterForm
 from forms import CreatePostForm
 
 
@@ -59,10 +59,36 @@ with app.app_context():
     db.create_all()
 
 
-# TODO: Use Werkzeug to hash the user's password when creating a new user.
-@app.route('/register')
+# Use Werkzeug to hash the user's password when creating a new user.
+@app.route('/register', methods=['GET', 'POST'])
 def register():
-    return render_template("register.html")
+    form = RegisterForm()
+    if form.validate_on_submit():
+        # if the email exist pop up error
+        email = request.form.get('email')
+        result = db.session.execute(db.select(User).where(User.email == email)).scalar()
+
+        if result:
+            print('This email already exist.')
+            return redirect(url_for('login'))
+        # hash the password interned from user
+
+        hash_password = generate_password_hash(
+            request.form.get('password'),
+            method='scrypt',
+            salt_length=16
+        )
+        #create new user
+        new_user = User(
+            name=request.form.get('name'),
+            email =  request.form.get('email'),
+            password=hash_password
+        )
+        # save into db
+        db.session.add(new_user)
+        db.session.commit()
+
+    return render_template(template_name_or_list="register.html", form=form)
 
 
 # TODO: Retrieve a user from the database based on their email. 
