@@ -43,6 +43,7 @@ db.init_app(app)
 
 # CONFIGURE TABLES
 class BlogPost(db.Model):
+    
     __tablename__ = "blog_posts"
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     title: Mapped[str] = mapped_column(String(250), unique=True, nullable=False)
