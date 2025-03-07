@@ -63,6 +63,7 @@ class User(UserMixin,db.Model):
     name: Mapped[str] = mapped_column(String(1000))
     email: Mapped[str] = mapped_column(String(100), unique=True)
     password: Mapped[str] = mapped_column(String(100))
+
     blog : Mapped[List["BlogPost"]] = relationship()
 
 
