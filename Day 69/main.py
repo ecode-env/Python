@@ -172,8 +172,12 @@ def get_all_posts():
 @login_required
 def show_post(post_id):
     requested_post = db.get_or_404(BlogPost, post_id)
+
+    comment=CommentForm()
+
     return render_template("post.html",
                            post=requested_post,
+                           form=comment
                            )
 
 
