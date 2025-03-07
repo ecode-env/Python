@@ -136,14 +136,19 @@ def logout():
 def get_all_posts():
     result = db.session.execute(db.select(BlogPost))
     posts = result.scalars().all()
-    return render_template("index.html", all_posts=posts, logged_in=current_user.is_authenticated)
+    return render_template(template_name_or_list="index.html",
+                           all_posts=posts,
+                           logged_in=current_user.is_authenticated,
+                           )
 
 
 # TODO: Allow logged-in users to comment on posts
 @app.route("/post/<int:post_id>")
 def show_post(post_id):
     requested_post = db.get_or_404(BlogPost, post_id)
-    return render_template("post.html", post=requested_post)
+    return render_template("post.html",
+                           post=requested_post,
+                           )
 
 
 # TODO: Use a decorator so only an admin user can create a new post
@@ -156,7 +161,7 @@ def add_new_post():
             subtitle=form.subtitle.data,
             body=form.body.data,
             img_url=form.img_url.data,
-            author=current_user,
+            author=str(current_user.id),
             date=date.today().strftime("%B %d, %Y")
         )
         db.session.add(new_post)
