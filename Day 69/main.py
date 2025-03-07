@@ -43,7 +43,7 @@ db.init_app(app)
 
 # CONFIGURE TABLES
 class BlogPost(db.Model):
-    
+
     __tablename__ = "blog_posts"
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     title: Mapped[str] = mapped_column(String(250), unique=True, nullable=False)
@@ -59,6 +59,7 @@ class BlogPost(db.Model):
 # Create a User table for all your registered users.
 
 class User(UserMixin,db.Model):
+
     __tablename__ = 'user'
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(1000))
