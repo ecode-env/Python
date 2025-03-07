@@ -201,7 +201,6 @@ def show_post(post_id):
         if not current_user.is_authenticated:
             flash('You need to login or register to comment.')
             return redirect(url_for('login'))
-        comment = request.form.get('comment')
 
         new_comment = Comment(
             text=comment_form.comment.data,
