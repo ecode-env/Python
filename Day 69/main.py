@@ -74,7 +74,11 @@ class User(UserMixin,db.Model):
 
     posts = relationship(argument="BlogPost", back_populates="author")
 
-
+# New table for the database
+class Comment(db.Model):
+    __tablename__ = "comments"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    text: Mapped[str] = mapped_column(Text, nullable=False)
 
 with app.app_context():
     db.create_all()
