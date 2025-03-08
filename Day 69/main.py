@@ -89,6 +89,7 @@ class User(UserMixin,db.Model):
 
 # New table for the database
 class Comment(db.Model):
+
     __tablename__ = "comments"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
