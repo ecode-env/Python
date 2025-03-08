@@ -206,6 +206,7 @@ def show_post(post_id):
             parent_post=requested_post
         )
 
+
         db.session.add(new_comment)
         db.session.commit()
 
