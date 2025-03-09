@@ -179,7 +179,7 @@ def logout():
     logout_user()
     return redirect(url_for('get_all_posts'))
 
-
+# home page
 @app.route('/')
 def get_all_posts():
     result = db.session.execute(db.select(BlogPost))
