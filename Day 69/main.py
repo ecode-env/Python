@@ -34,6 +34,7 @@ gravatar = Gravatar(app,
 
 # Configure Flask-Login
 
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 
