@@ -173,7 +173,7 @@ def admin_only(f):
     return decorated_function
 
 
-
+# logoute
 @app.route('/logout')
 def logout():
     logout_user()
