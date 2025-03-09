@@ -276,7 +276,7 @@ def delete_post(post_id):
 def about():
     return render_template("about.html")
 
-
+# contatct route
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
