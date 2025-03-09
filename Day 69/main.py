@@ -14,7 +14,7 @@ from forms import CreatePostForm
 
 
 
-
+# abb
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donxcrtvybuijojzWlSihBXox7C0sKR6b'
 ckeditor = CKEditor(app)
