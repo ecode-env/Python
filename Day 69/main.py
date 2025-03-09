@@ -21,7 +21,7 @@ ckeditor = CKEditor(app)
 Bootstrap5(app)
 
 
-
+# generate avatar image
 gravatar = Gravatar(app,
                     size=100,
                     rating='g',
@@ -33,8 +33,6 @@ gravatar = Gravatar(app,
 
 
 # Configure Flask-Login
-
-
 login_manager = LoginManager()
 login_manager.init_app(app)
 
@@ -173,7 +171,7 @@ def admin_only(f):
     return decorated_function
 
 
-# logoute
+# logout
 @app.route('/logout')
 def logout():
     logout_user()
