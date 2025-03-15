@@ -9,7 +9,7 @@
           <h1>{{ post.title }}</h1>
           <h2 class="subheading">{{ post.subtitle }}</h2>
           <span class="meta"
-            >Posted by
+          >Posted by
             <a href="#">{{ post.author.name }}</a>
             on {{ post.date }}
           </span>
@@ -38,7 +38,7 @@
         {% endif %}
         <!-- Comments Area -->
         <!--Add a CKEditor for commenting below -->
-              {{ ckeditor.load() }}
+        {{ ckeditor.load() }}
         <!-- Configure it with the name of the form field from CommentForm -->
         {{ ckeditor.config(name='comment_text') }}
         <!-- Create the wtf quick form from CommentForm -->
@@ -50,7 +50,7 @@
             <li>
               <div class="commenterImage">
                 <img
-                  src="{{ comment.comment_author.email | gravatar }}"
+                        src="{{ comment.comment_author.email | gravatar }}"
                 />
               </div>
               <div class="commentText">
