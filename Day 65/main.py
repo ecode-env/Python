@@ -1,3 +1,3 @@
 import select
 
-print(select)
+print(help(select))
